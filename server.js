@@ -49,7 +49,7 @@ app.get('/blog-posts/:author', (req, res) => {
         res.status(406).json({
             message: `Missing author field in params`,
             status: 406
-        })
+        });
     }
 
     postArray.forEach(item => {
