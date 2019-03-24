@@ -47,7 +47,7 @@ app.get('/blog-posts/:author', (req, res) => {
 
     if(!postAuthor){
         res.status(406).json({
-            message: `Missing author field in params`,
+            message: "Missing author field in params",
             status: 406
         });
     }
@@ -60,7 +60,7 @@ app.get('/blog-posts/:author', (req, res) => {
 
     if(authorPosts.length > 0){
         res.status(200).json({
-            message: 'Successfully sent the list of posts',
+            message: "Successfully sent the list of posts",
             status: 200,
             post: authorPosts
         });
@@ -117,7 +117,7 @@ app.delete('/blog-posts/:id', jsonParser, (req, res) => {
 
     if(!bodyId || !paramId || bodyId != paramId){
         res.status(406).json({
-            message: `Missing id field in body or paramters or id's don't match`,
+            message: "Missing id field in body or paramters or id's don't match",
             status: 406
         });
         return;
@@ -127,7 +127,7 @@ app.delete('/blog-posts/:id', jsonParser, (req, res) => {
         if(paramId == item.id){
             postArray.splice(item, 1);
             res.status(200).json({
-                message: 'Successfully deleted post',
+                message: "Successfully deleted post",
                 status: 200
             });
             return;
@@ -135,7 +135,7 @@ app.delete('/blog-posts/:id', jsonParser, (req, res) => {
     });
 
     res.status(404).json({
-        message: 'Post not found',
+        message: "Post not found",
         status: 404
     });
 });
@@ -149,14 +149,14 @@ app.put('/blog-posts/:id', jsonParser, (req, res) => {
     
     if(!postId){
         res.status(406).json({
-            message: 'Missing id field in params',
+            message: "Missing id field in params",
             status: 406
         });
     }
 
     if(!updatedPost.title && !updatedPost.content && !updatedPost.author && !updatedPost.publishDate){
         res.status(404).json({
-            message: 'No data in body',
+            message: "No data in body",
             status: 404
         });
     }else{
@@ -169,7 +169,7 @@ app.put('/blog-posts/:id', jsonParser, (req, res) => {
                 newPost = item;
 
                 res.status(200).json({
-                    message: 'Successfully updated post',
+                    message: "Successfully updated post",
                     status: 200,
                     post: newPost
                 });
