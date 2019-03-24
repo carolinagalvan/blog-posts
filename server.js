@@ -123,13 +123,10 @@ app.delete('/blog-posts/:id', jsonParser, (req, res) => {
         return;
     }
 
-    postArray.forEach(item => {
+    postArray.forEach((item, index) => {
         if(paramId == item.id){
-            postArray.splice(item, 1);
-            res.status(200).json({
-                message: "Successfully deleted post",
-                status: 200
-            });
+            delete postArray[index];
+            res.status(204).send("Finish");
             return;
         }
     });
